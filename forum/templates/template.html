@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>Templates Inheritance Example</title>
+</head>
+<body>
+<div class="container">	
+    <h1>Title stored in the base template</h1>
+    <h2>With a subtitle</h2>
+    <strong><nav>
+      <ul class="menu">
+	<li><a href="{{ url_for("template1.html") }}">Page1</a></li>
+	<li><a href="{{ url_for("template2.html") }}">Page2</a></li>
+      </ul>
+      </nav></strong>
+</div>
+    {% block content %} {% endblock %}
+
+</body>
+</html>
