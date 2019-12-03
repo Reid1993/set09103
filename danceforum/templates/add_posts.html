@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<br>
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-3">
+    </div>
+
+    <div class="col-md-6">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success">
+           {{ message }}
+        </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <h1>Create Post</h1>
+    <br>
+    <form action="{{ url_for('addpost') }}" method="POST">
+        <div class="form-group">
+            <label for="group">Page Category:</label>
+            <select class="form-control" id="group" name="groupid">
+              <option value="1">UK Events</option>
+              <option value="2">European Events</option>
+              <option value="3">USA Events</option>
+              <option value="4">DJ Zone</option>
+              <option value="5">Producer Zone</option>
+              <option value="6">The Studio</option>
+              <option value="7">Music Chat</option>
+              <option value="8">Music Reviews</option>
+              <option value="9">Music Recommendations</option>
+            </select>
+          </div>
+        <div class="form-group">
+          <label for="title">Post Title:</label>
+          <input type="title" class="form-control" id="title" name="title">
+        </div>
+        <div class="form-group">
+          <label for="content">Content:</label>
+          <textarea class="form-control" rows="10" id="content" name="content"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br>
+    </div>
+
+    <div class="col-md-3">
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}
