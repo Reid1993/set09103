@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for post in posts %}
+
+<br>
+<div class="cotainer">
+<h1> {{ post.title }} </h1>
+<p> {{ post.content }} </p>
+</div>
+<br>
+
+{% endfor %}
+
+{% endblock %}

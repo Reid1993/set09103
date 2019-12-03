@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="text-center">Welcome to the USA Events Forum!</h1> 
+      <p class="text-center">Find upcoming events in the USA or post your own.</p> 
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-8">
+
+          <h1 class="my-4">Posts</h1>
+
+          <!--{% for post in posts %}
+
+          <h1>{{ post.title }} {{ post.content }} {{ post.creatorID }}</h1>
+
+          {% endfor %}-->
+
+          {% for post in posts %}
+          <div class="card mb-4">
+              <!--<img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">-->
+              <div class="card-body">
+                <h2 class="card-title">{{ post.title }}</h2>
+                <!--<p class="card-text">{{ post.content }}</p>-->
+                <!--<a href="#" class="btn btn-primary">Read More &rarr;</a>-->
+              </div>
+              <div class="card-footer text-muted">
+                <a href="/post/{{post.postID}}">Posted by {{ post.creatorID }}</a>
+                <!--<a href="#">Start Bootstrap</a>-->
+              </div>
+          </div>
+          {% endfor %}
+            
+        </div>
+
+        <div class="col-md-4">
+
+
+        <div class="card my-4">
+            <h5 class="card-header">Post Guide</h5>
+            <div class="card-body">
+                <p>To create a post you must be logged in to your account. Once logged in click on the button below to create a post.</p>
+            </div>
+          </div>
+            {% if session.user %}
+            <div class="container text-center">
+                <form action="{{ url_for('addpost') }}" method="GET">
+                <button type="submit" class="btn btn-primary">Create Post</button>
+                </form>
+            </div>
+            <br>
+            {% endif %}          
+          </div>
+    
+    </div>
+    
+</div>
+
+
+{% endblock %}
